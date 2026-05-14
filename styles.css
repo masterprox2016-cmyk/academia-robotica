@@ -182,6 +182,13 @@ section { padding: 5rem 2rem; }
 .card-title { font-family: 'Orbitron', sans-serif; font-size: 0.95rem; color: var(--cba-navy); margin-bottom: 0.8rem; }
 .card-text { color: var(--text-muted); font-size: 0.88rem; line-height: 1.7; }
 
+/* Mission pillars list */
+.mission-pillars { list-style: none; display: flex; flex-direction: column; gap: 0.9rem; margin-top: 0.4rem; }
+.mission-pillars li { display: flex; align-items: flex-start; gap: 0.75rem; }
+.pillar-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 0.1rem; }
+.mission-pillars strong { display: block; font-size: 0.85rem; color: var(--cba-navy); margin-bottom: 0.15rem; }
+.mission-pillars p { font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; margin: 0; }
+
 /* ── NIVELES ── */
 .levels-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; max-width: 1100px; margin: 0 auto; }
 
