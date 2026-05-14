@@ -5,14 +5,18 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ── Floating particles in hero ── */
   const particlesContainer = document.getElementById('hero-particles');
   if (particlesContainer) {
-    for (let i = 0; i < 40; i++) {
+    for (let i = 0; i < 50; i++) {
       const span = document.createElement('span');
       span.style.left = Math.random() * 100 + '%';
       span.style.animationDelay = Math.random() * 8 + 's';
       span.style.animationDuration = (6 + Math.random() * 6) + 's';
-      span.style.width = (1 + Math.random() * 3) + 'px';
-      span.style.height = span.style.width;
-      span.style.opacity = Math.random() * 0.6 + 0.2;
+      const size = (1 + Math.random() * 3) + 'px';
+      span.style.width = size;
+      span.style.height = size;
+      span.style.background = Math.random() > 0.5
+        ? 'rgba(255,215,0,0.6)'
+        : 'rgba(0,123,255,0.5)';
+      span.style.borderRadius = '50%';
       particlesContainer.appendChild(span);
     }
   }
@@ -24,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('scroll', () => {
     const y = window.scrollY;
     header.classList.toggle('scrolled', y > 60);
-    scrollTopBtn.classList.toggle('visible', y > 400);
+    if (scrollTopBtn) scrollTopBtn.classList.toggle('visible', y > 400);
   });
 
   /* ── Scroll To Top ── */
@@ -57,14 +61,13 @@ document.addEventListener('DOMContentLoaded', () => {
       const open = mainNav.classList.toggle('open');
       hamburger.setAttribute('aria-expanded', open);
     });
-    // Close on nav link click
     mainNav.querySelectorAll('a').forEach(a => {
       a.addEventListener('click', () => mainNav.classList.remove('open'));
     });
   }
 
-  /* ── Reveal on scroll (IntersectionObserver) ── */
-  const reveals = document.querySelectorAll('.reveal');
+  /* ── Reveal on scroll — all variants ── */
+  const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
   const observerReveal = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -72,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
         observerReveal.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.12 });
+  }, { threshold: 0.1 });
 
   reveals.forEach(el => observerReveal.observe(el));
 
@@ -82,49 +85,28 @@ document.addEventListener('DOMContentLoaded', () => {
       const target = document.querySelector(anchor.getAttribute('href'));
       if (target) {
         e.preventDefault();
-        const offset = header.offsetHeight + 8;
+        const offset = header ? header.offsetHeight + 8 : 80;
         window.scrollTo({ top: target.offsetTop - offset, behavior: 'smooth' });
       }
     });
   });
 
   /* ── Animate stat numbers ── */
-  function animateNumber(el, target, suffix = '') {
-    let start = 0;
-    const duration = 1800;
-    const startTime = performance.now();
-    const isNumeric = !isNaN(parseInt(target));
-
-    if (!isNumeric) return; // skip non-numeric like "WRO"
-
-    const end = parseInt(target);
-    const step = (now) => {
-      const elapsed = now - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      const ease = 1 - Math.pow(1 - progress, 3);
-      el.textContent = Math.floor(ease * end) + suffix;
-      if (progress < 1) requestAnimationFrame(step);
-    };
-    requestAnimationFrame(step);
-  }
-
   const statNums = document.querySelectorAll('.stat-num');
   const statObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         const el = entry.target;
         const raw = el.textContent.trim();
-        // e.g. "+4", "$50", "3", "WRO"
         const match = raw.match(/([+$]?)(\d+)(.*)/);
         if (match) {
-          const prefix = match[1];
-          const num    = parseInt(match[2]);
-          const suffix = match[3];
-          let count = 0;
+          const prefix   = match[1];
+          const num      = parseInt(match[2]);
+          const suffix   = match[3];
           const duration = 1600;
-          const start = performance.now();
-          const animate = (now) => {
-            const p = Math.min((now - start) / duration, 1);
+          const start    = performance.now();
+          const animate  = (now) => {
+            const p    = Math.min((now - start) / duration, 1);
             const ease = 1 - Math.pow(1 - p, 3);
             el.textContent = prefix + Math.floor(ease * num) + suffix;
             if (p < 1) requestAnimationFrame(animate);
@@ -138,18 +120,43 @@ document.addEventListener('DOMContentLoaded', () => {
 
   statNums.forEach(n => statObserver.observe(n));
 
-  /* ── Card hover glow ── */
+  /* ── 3D Tilt on cards ── */
   document.querySelectorAll('.level-card, .staff-card, .about-card, .inv-card').forEach(card => {
     card.addEventListener('mousemove', e => {
-      const rect = card.getBoundingClientRect();
-      const x = ((e.clientX - rect.left) / rect.width)  * 100;
-      const y = ((e.clientY - rect.top)  / rect.height) * 100;
-      card.style.setProperty('--gx', x + '%');
-      card.style.setProperty('--gy', y + '%');
+      const rect  = card.getBoundingClientRect();
+      const x     = (e.clientX - rect.left) / rect.width;
+      const y     = (e.clientY - rect.top)  / rect.height;
+      const tiltX = (y - 0.5) * -10;
+      const tiltY = (x - 0.5) *  10;
+      card.style.transform = `perspective(600px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) translateY(-6px)`;
+      card.style.setProperty('--gx', (x * 100) + '%');
+      card.style.setProperty('--gy', (y * 100) + '%');
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
     });
   });
 
-  /* ── Gallery lightbox (simple) ── */
+  /* ── Typewriter effect on hero slogan ── */
+  const slogan = document.querySelector('.hero-slogan');
+  if (slogan) {
+    const text = slogan.textContent.trim();
+    slogan.textContent = '';
+    slogan.style.borderRight = '2px solid rgba(255,255,255,0.6)';
+    slogan.style.paddingRight = '4px';
+    let i = 0;
+    const type = () => {
+      if (i < text.length) {
+        slogan.textContent += text[i++];
+        setTimeout(type, 38);
+      } else {
+        setTimeout(() => { slogan.style.borderRight = 'none'; }, 1200);
+      }
+    };
+    setTimeout(type, 1200);
+  }
+
+  /* ── Gallery lightbox ── */
   document.querySelectorAll('.gallery-3 img').forEach(img => {
     img.addEventListener('click', () => {
       const overlay = document.createElement('div');
