@@ -372,208 +372,256 @@ footer { background: var(--cba-navy2); border-top: 2px solid rgba(255,215,0,0.25
 
 .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1.5rem; text-align: center; color: rgba(255,255,255,0.35); font-size: 0.78rem; max-width: 1100px; margin: 0 auto; }
 
-/* ── ANIMATIONS ── */
-@keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes fadeInUp   { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes fadeInLeft { from { opacity: 0; transform: translateX(-40px); } to { opacity: 1; transform: translateX(0); } }
-@keyframes fadeInRight{ from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: translateX(0); } }
-@keyframes scaleIn    { from { opacity: 0; transform: scale(0.85); } to { opacity: 1; transform: scale(1); } }
+/* ═══════════════════════════════════════════════════
+   ANIMACIONES — Optimizadas para GPU / 60fps
+   Sólo se animan opacity y transform (no layout)
+═══════════════════════════════════════════════════ */
 
-/* Reveal system — now with stagger and directional variants */
-.reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.75s cubic-bezier(.22,1,.36,1), transform 0.75s cubic-bezier(.22,1,.36,1); }
-.reveal.visible { opacity: 1; transform: translateY(0); }
-.reveal-left  { opacity: 0; transform: translateX(-40px); transition: opacity 0.75s cubic-bezier(.22,1,.36,1), transform 0.75s cubic-bezier(.22,1,.36,1); }
-.reveal-left.visible  { opacity: 1; transform: translateX(0); }
-.reveal-right { opacity: 0; transform: translateX(40px);  transition: opacity 0.75s cubic-bezier(.22,1,.36,1), transform 0.75s cubic-bezier(.22,1,.36,1); }
-.reveal-right.visible { opacity: 1; transform: translateX(0); }
-.reveal-scale { opacity: 0; transform: scale(0.88); transition: opacity 0.65s ease, transform 0.65s ease; }
-.reveal-scale.visible { opacity: 1; transform: scale(1); }
-
-/* Stagger delays */
-.reveal:nth-child(1), .reveal-left:nth-child(1), .reveal-right:nth-child(1), .reveal-scale:nth-child(1) { transition-delay: 0s; }
-.reveal:nth-child(2), .reveal-left:nth-child(2), .reveal-right:nth-child(2), .reveal-scale:nth-child(2) { transition-delay: 0.12s; }
-.reveal:nth-child(3), .reveal-left:nth-child(3), .reveal-right:nth-child(3), .reveal-scale:nth-child(3) { transition-delay: 0.22s; }
-.reveal:nth-child(4), .reveal-left:nth-child(4), .reveal-right:nth-child(4), .reveal-scale:nth-child(4) { transition-delay: 0.32s; }
-.reveal:nth-child(5), .reveal-left:nth-child(5), .reveal-right:nth-child(5), .reveal-scale:nth-child(5) { transition-delay: 0.42s; }
-.reveal:nth-child(6), .reveal-left:nth-child(6), .reveal-right:nth-child(6), .reveal-scale:nth-child(6) { transition-delay: 0.52s; }
-
-/* ── LOGO animated border glow ── */
-.logo-wrap img {
-  animation: logo-glow 3s ease-in-out infinite alternate;
+/* ── Keyframes core ── */
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-16px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-30px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(30px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* ── Reveal system ── */
+.reveal,
+.reveal-left,
+.reveal-right,
+.reveal-scale {
+  opacity: 0;
+  will-change: opacity, transform;
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.reveal        { transform: translateY(28px); }
+.reveal-left   { transform: translateX(-28px); }
+.reveal-right  { transform: translateX(28px); }
+.reveal-scale  { transform: scale(0.92); }
+
+.reveal.visible,
+.reveal-left.visible,
+.reveal-right.visible,
+.reveal-scale.visible {
+  opacity: 1;
+  transform: none;
+  will-change: auto; /* libera la capa GPU una vez terminada */
+}
+
+/* Stagger delays — máximo 6 hijos */
+.reveal:nth-child(2), .reveal-left:nth-child(2),
+.reveal-right:nth-child(2), .reveal-scale:nth-child(2) { transition-delay: 0.08s; }
+.reveal:nth-child(3), .reveal-left:nth-child(3),
+.reveal-right:nth-child(3), .reveal-scale:nth-child(3) { transition-delay: 0.16s; }
+.reveal:nth-child(4), .reveal-left:nth-child(4),
+.reveal-right:nth-child(4), .reveal-scale:nth-child(4) { transition-delay: 0.24s; }
+.reveal:nth-child(5), .reveal-left:nth-child(5),
+.reveal-right:nth-child(5), .reveal-scale:nth-child(5) { transition-delay: 0.32s; }
+.reveal:nth-child(6), .reveal-left:nth-child(6),
+.reveal-right:nth-child(6), .reveal-scale:nth-child(6) { transition-delay: 0.40s; }
+
+/* ── Logo glow — suave, solo opacity ── */
 @keyframes logo-glow {
-  0%   { box-shadow: 0 0 8px 2px rgba(255,215,0,0.4); }
-  100% { box-shadow: 0 0 22px 8px rgba(255,215,0,0.85); }
+  0%, 100% { box-shadow: 0 0 6px 2px rgba(255,215,0,0.35); }
+  50%       { box-shadow: 0 0 18px 6px rgba(255,215,0,0.70); }
+}
+.logo-wrap img {
+  animation: logo-glow 3.5s ease-in-out infinite;
+  will-change: box-shadow;
 }
 
-/* ── HEADER animated gradient border ── */
-header {
-  background: rgba(0,28,70,0.97);
-  animation: header-border 4s linear infinite;
+/* ── Header border pulse — usa opacity para no repintar ── */
+header::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--electric), var(--gold), var(--electric));
+  background-size: 200% 100%;
+  animation: header-shimmer 4s linear infinite;
+  will-change: background-position;
 }
-@keyframes header-border {
-  0%,100% { border-bottom-color: rgba(255,215,0,0.3); }
-  50%      { border-bottom-color: rgba(0,123,255,0.6); }
+@keyframes header-shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
 }
 
-/* ── HERO badge shimmer ── */
-.hero-badge {
-  background: rgba(255,215,0,0.12);
-  overflow: hidden;
-  position: relative;
-}
+/* ── Hero badge shimmer ── */
+.hero-badge { overflow: hidden; position: relative; }
 .hero-badge::after {
   content: '';
   position: absolute;
-  top: 0; left: -100%; width: 60%; height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
-  animation: shimmer 2.5s ease infinite;
+  top: 0; left: -120%; width: 60%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent);
+  animation: shimmer 3s ease infinite;
+  will-change: transform;
 }
 @keyframes shimmer {
-  0%   { left: -100%; }
-  100% { left: 200%; }
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(500%); }
 }
 
-/* ── HERO title animated underline ── */
-.hero-title .highlight {
-  position: relative;
-  display: inline-block;
-}
+/* ── Hero title underline expand ── */
+.hero-title .highlight { position: relative; }
 .hero-title .highlight::after {
   content: '';
   position: absolute;
   bottom: -4px; left: 0;
-  width: 100%; height: 4px;
+  width: 100%; height: 3px;
   background: linear-gradient(90deg, var(--electric), var(--gold));
   border-radius: 2px;
-  animation: line-expand 1.2s cubic-bezier(.22,1,.36,1) 0.8s both;
+  transform: scaleX(0);
   transform-origin: left;
+  animation: line-expand 1s cubic-bezier(.22,1,.36,1) 0.6s forwards;
+  will-change: transform;
 }
 @keyframes line-expand {
-  from { transform: scaleX(0); }
-  to   { transform: scaleX(1); }
+  to { transform: scaleX(1); }
 }
 
-/* ── BTN pulse on hover ── */
-.btn-primary {
-  position: relative;
-  overflow: hidden;
-}
+/* ── Btn ripple on hover ── */
+.btn-primary { position: relative; overflow: hidden; }
 .btn-primary::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.12);
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform 0.35s ease;
+  transition: transform 0.3s ease;
+  will-change: transform;
 }
 .btn-primary:hover::before { transform: scaleX(1); }
 
-/* ── SECTION TAG shimmer ── */
-.section-tag {
-  position: relative;
-  overflow: hidden;
-}
+/* ── Section tag subtle shimmer ── */
+.section-tag { position: relative; overflow: hidden; }
 .section-tag::after {
   content: '';
   position: absolute;
-  top: 0; left: -100%; width: 60%; height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(0,123,255,0.15), transparent);
-  animation: shimmer 3s ease infinite;
+  top: 0; left: -120%; width: 60%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0,123,255,0.12), transparent);
+  animation: shimmer 4s ease infinite 1s;
 }
 
-/* ── LEVEL / STAFF / ABOUT cards — mouse-tracking 3D tilt ── */
+/* ── Cards hover — NO preserve-3d (evita layer explosion) ── */
 .level-card, .staff-card, .about-card, .inv-card {
-  transform-style: preserve-3d;
-  will-change: transform;
-  transition: transform 0.4s cubic-bezier(.22,1,.36,1), box-shadow 0.4s ease, border-color 0.4s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
+.level-card:hover,  .staff-card:hover  { box-shadow: var(--shadow-lg); border-color: var(--electric); }
+.about-card:hover { box-shadow: var(--shadow-lg); }
+.inv-card:hover   { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+
+/* Radial glow spot on level/staff cards */
+.level-card, .staff-card { position: relative; }
 .level-card::after, .staff-card::after {
   content: '';
   position: absolute;
   inset: 0;
   border-radius: var(--radius);
-  background: radial-gradient(circle at var(--gx, 50%) var(--gy, 50%), rgba(0,123,255,0.08), transparent 60%);
+  background: radial-gradient(circle at var(--gx, 50%) var(--gy, 50%), rgba(0,123,255,0.07), transparent 55%);
   opacity: 0;
-  transition: opacity 0.4s ease;
+  transition: opacity 0.3s ease;
   pointer-events: none;
 }
 .level-card:hover::after, .staff-card:hover::after { opacity: 1; }
 
-/* ── LEVEL BADGE pop-in animation ── */
-.level-badge {
-  animation: badge-pop 0.5s cubic-bezier(.34,1.56,.64,1) both;
-}
+/* ── Level badge pop-in ── */
 @keyframes badge-pop {
-  from { transform: scale(0.5); opacity: 0; }
+  from { transform: scale(0.6); opacity: 0; }
   to   { transform: scale(1);   opacity: 1; }
 }
+.level-badge { animation: badge-pop 0.45s cubic-bezier(.34,1.56,.64,1) both; }
 
-/* ── TOOL TAGS stagger float-in ── */
+/* ── Tool tags hover ── */
 .tool-tag {
-  transition: all 0.25s ease;
   display: inline-block;
+  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 .tool-tag:hover {
-  background: var(--electric);
-  color: #fff;
+  background: var(--electric); color: #fff;
   border-color: var(--electric);
-  transform: translateY(-3px) scale(1.05);
+  transform: translateY(-2px) scale(1.04);
 }
 
-/* ── DIVIDER animated line ── */
-.divider-line {
-  animation: width-expand 1s cubic-bezier(.22,1,.36,1) both;
-  transform-origin: left;
-}
+/* ── Divider expand ── */
 @keyframes width-expand {
   from { width: 0; opacity: 0; }
   to   { width: 60px; opacity: 1; }
 }
+.divider-line { animation: width-expand 0.8s cubic-bezier(.22,1,.36,1) both; }
 
-/* ── FOOTER brand logo pulse ── */
-.footer-brand .f-logo img {
-  animation: logo-glow 3s ease-in-out infinite alternate;
-}
+/* ── Footer logo (reusa logo-glow) ── */
+.footer-brand .f-logo img { animation: logo-glow 3.5s ease-in-out infinite; }
 
-/* ── WHATSAPP bounce ── */
-.whatsapp-btn {
-  animation: whatsapp-bounce 2.5s ease-in-out infinite;
-}
+/* ── WhatsApp — rebote suave ── */
 @keyframes whatsapp-bounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-4px); }
+}
+.whatsapp-btn { animation: whatsapp-bounce 2.8s ease-in-out infinite; }
+.whatsapp-btn:hover { animation: none; transform: translateY(-2px); }
+
+/* ── Scroll-top button ── */
+@keyframes spin-once {
+  to { transform: rotate(-360deg); }
+}
+.scroll-top { 
+  position: fixed; bottom: 2rem; right: 2rem; z-index: 999;
+  width: 44px; height: 44px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--electric), var(--electric-dk));
+  color: #fff; border: none; cursor: pointer; font-size: 1.2rem;
+  box-shadow: 0 4px 20px rgba(0,123,255,0.4);
+  opacity: 0; transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  display: flex; align-items: center; justify-content: center;
+}
+.scroll-top.visible { opacity: 1; transform: translateY(0); }
+.scroll-top:hover   { transform: translateY(-3px) scale(1.08); }
+.scroll-top:hover i { animation: spin-once 0.4s ease; }
+
+/* ── About card icon float ── */
+@keyframes float-icon {
   0%, 100% { transform: translateY(0); }
   50%       { transform: translateY(-5px); }
 }
-.whatsapp-btn:hover { animation: none; }
-
-/* ── SCROLL TOP spin on hover ── */
-.scroll-top:hover i {
-  animation: spin-once 0.45s ease;
-}
-@keyframes spin-once {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(-360deg); }
-}
-
-/* ── ABOUT CARD icon float ── */
 .card-icon {
   display: inline-block;
-  animation: float-icon 3s ease-in-out infinite;
-}
-@keyframes float-icon {
-  0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(-6px); }
+  animation: float-icon 3.2s ease-in-out infinite;
+  will-change: transform;
 }
 
-/* ── STATS pulse ── */
+/* ── Stats glow pulse ── */
+@keyframes stat-glow {
+  0%, 100% { text-shadow: none; }
+  50%       { text-shadow: 0 0 14px rgba(255,215,0,0.6); }
+}
 .stat-num {
   display: inline-block;
-  animation: stat-pulse 3s ease-in-out infinite;
+  animation: stat-glow 3.5s ease-in-out infinite;
 }
-@keyframes stat-pulse {
-  0%, 100% { text-shadow: 0 0 0px var(--gold); }
-  50%       { text-shadow: 0 0 18px rgba(255,215,0,0.7); }
+
+/* ══════════════════════════════
+   ACCESIBILIDAD — Respeta la preferencia del usuario
+══════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 /* ── SCROLL ── */
@@ -611,4 +659,5 @@ header {
   .gallery-3 { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr; }
 }
+
 

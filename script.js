@@ -2,23 +2,25 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  /* ── Floating particles in hero ── */
+  /* ── Floating particles in hero (reducidas a 30 para rendimiento) ── */
   const particlesContainer = document.getElementById('hero-particles');
   if (particlesContainer) {
-    for (let i = 0; i < 50; i++) {
+    const fragment = document.createDocumentFragment(); // batch insert
+    for (let i = 0; i < 30; i++) {
       const span = document.createElement('span');
-      span.style.left = Math.random() * 100 + '%';
-      span.style.animationDelay = Math.random() * 8 + 's';
-      span.style.animationDuration = (6 + Math.random() * 6) + 's';
-      const size = (1 + Math.random() * 3) + 'px';
-      span.style.width = size;
-      span.style.height = size;
-      span.style.background = Math.random() > 0.5
-        ? 'rgba(255,215,0,0.6)'
-        : 'rgba(0,123,255,0.5)';
-      span.style.borderRadius = '50%';
-      particlesContainer.appendChild(span);
+      span.style.cssText = `
+        left:${Math.random() * 100}%;
+        animation-delay:${(Math.random() * 8).toFixed(2)}s;
+        animation-duration:${(6 + Math.random() * 6).toFixed(2)}s;
+        width:${(1 + Math.random() * 2.5).toFixed(1)}px;
+        height:${(1 + Math.random() * 2.5).toFixed(1)}px;
+        background:${Math.random() > 0.5 ? 'rgba(255,215,0,0.55)' : 'rgba(0,123,255,0.45)'};
+        border-radius:50%;
+        position:absolute;
+      `;
+      fragment.appendChild(span);
     }
+    particlesContainer.appendChild(fragment);
   }
 
   /* ── Header scroll effect ── */
@@ -120,19 +122,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
   statNums.forEach(n => statObserver.observe(n));
 
-  /* ── 3D Tilt on cards ── */
+  /* ── 3D Tilt on cards — throttled via rAF ── */
   document.querySelectorAll('.level-card, .staff-card, .about-card, .inv-card').forEach(card => {
+    let rafId = null;
+    let lastX = 0, lastY = 0;
+
     card.addEventListener('mousemove', e => {
-      const rect  = card.getBoundingClientRect();
-      const x     = (e.clientX - rect.left) / rect.width;
-      const y     = (e.clientY - rect.top)  / rect.height;
-      const tiltX = (y - 0.5) * -10;
-      const tiltY = (x - 0.5) *  10;
-      card.style.transform = `perspective(600px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) translateY(-6px)`;
-      card.style.setProperty('--gx', (x * 100) + '%');
-      card.style.setProperty('--gy', (y * 100) + '%');
+      const rect = card.getBoundingClientRect();
+      lastX = (e.clientX - rect.left) / rect.width;
+      lastY = (e.clientY - rect.top)  / rect.height;
+
+      if (!rafId) {
+        rafId = requestAnimationFrame(() => {
+          const tiltX = (lastY - 0.5) * -8;
+          const tiltY = (lastX - 0.5) *  8;
+          card.style.transform = `perspective(700px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) translateY(-5px)`;
+          card.style.setProperty('--gx', (lastX * 100) + '%');
+          card.style.setProperty('--gy', (lastY * 100) + '%');
+          rafId = null;
+        });
+      }
     });
+
     card.addEventListener('mouseleave', () => {
+      if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
       card.style.transform = '';
     });
   });
