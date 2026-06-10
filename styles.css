@@ -372,6 +372,140 @@ footer { background: var(--cba-navy2); border-top: 2px solid rgba(255,215,0,0.25
 
 .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1.5rem; text-align: center; color: rgba(255,255,255,0.35); font-size: 0.78rem; max-width: 1100px; margin: 0 auto; }
 
+/* ── PLAN DE FORMACIÓN ── */
+.phases-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+.phase-card {
+  background: #fff;
+  border: 1.5px solid var(--card-border);
+  border-radius: var(--radius);
+  padding: 2rem 1.8rem;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.phase-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 4px;
+  background: linear-gradient(90deg, var(--electric), var(--gold));
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.phase-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+.phase-card:hover::before { opacity: 1; }
+
+/* Fase 2 destacada */
+.phase-featured {
+  border-color: var(--gold);
+  background: linear-gradient(160deg, #fffde7 0%, #fff 60%);
+  box-shadow: 0 6px 30px rgba(255,215,0,0.15);
+}
+.phase-featured::before { opacity: 1; background: linear-gradient(90deg, var(--gold), var(--electric)); }
+.phase-featured-badge {
+  position: absolute;
+  top: -13px; left: 50%; transform: translateX(-50%);
+  background: linear-gradient(135deg, var(--gold-dk), var(--gold));
+  color: var(--cba-navy); font-size: 0.68rem; font-weight: 800;
+  padding: 0.3rem 1rem; border-radius: 50px; white-space: nowrap;
+  letter-spacing: 1px;
+}
+
+.phase-number {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 3rem; font-weight: 900;
+  color: rgba(0,40,85,0.08);
+  line-height: 1; margin-bottom: 0.2rem;
+  position: absolute; top: 1.2rem; right: 1.5rem;
+}
+.phase-number.gold { color: rgba(255,215,0,0.25); }
+
+.phase-icon {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+  display: inline-block;
+  animation: float-icon 3.2s ease-in-out infinite;
+}
+.phase-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.95rem; color: var(--cba-navy);
+  line-height: 1.4; margin-bottom: 0.8rem;
+}
+.phase-label {
+  display: inline-block; font-size: 0.68rem; font-weight: 700;
+  padding: 0.3rem 0.9rem; border-radius: 50px; margin-bottom: 1rem;
+  text-transform: uppercase; letter-spacing: 1px;
+}
+.label-green { background: #e8f5e9; color: #2e7d32; }
+.label-gold  { background: rgba(255,215,0,0.15); color: #8a6d00; }
+.label-blue  { background: rgba(0,123,255,0.1); color: var(--electric-dk); }
+
+.phase-desc {
+  color: var(--text-muted); font-size: 0.87rem;
+  line-height: 1.65; margin-bottom: 1rem;
+}
+
+.phase-list {
+  list-style: none; padding: 0;
+  display: flex; flex-direction: column; gap: 0.7rem;
+  margin-bottom: 1.2rem;
+}
+.phase-list li {
+  color: var(--text-body); font-size: 0.84rem;
+  padding: 0.5rem 0.8rem;
+  background: var(--gray-light); border-radius: 8px;
+  line-height: 1.5;
+}
+.phase-age {
+  display: inline-block;
+  background: rgba(0,123,255,0.08);
+  color: var(--electric-dk);
+  font-size: 0.72rem; font-weight: 700;
+  padding: 0.15rem 0.5rem; border-radius: 4px;
+  margin-right: 0.4rem; white-space: nowrap;
+}
+.phase-tools { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+/* Calendario competitivo interno (Fase 3) */
+.internal-calendar {
+  display: flex; flex-direction: column; gap: 0.7rem;
+  margin: 1rem 0;
+}
+.cal-event {
+  display: flex; align-items: flex-start; gap: 0.9rem;
+  background: rgba(0,123,255,0.05);
+  border: 1px solid rgba(0,123,255,0.18);
+  border-radius: 10px; padding: 0.75rem 1rem;
+  transition: all 0.25s;
+}
+.cal-event:hover { border-color: var(--electric); background: rgba(0,123,255,0.09); }
+.cal-month {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.68rem; font-weight: 800;
+  color: var(--electric); background: rgba(0,123,255,0.1);
+  border-radius: 6px; padding: 0.35rem 0.5rem;
+  text-align: center; white-space: nowrap; flex-shrink: 0;
+  letter-spacing: 1px;
+}
+.cal-info { display: flex; flex-direction: column; gap: 0.2rem; }
+.cal-info strong { color: var(--cba-navy); font-size: 0.84rem; }
+.cal-info span { color: var(--text-muted); font-size: 0.78rem; line-height: 1.4; }
+
+/* Distintivo de horas en tarjetas de niveles */
+.level-hours {
+  color: var(--gold-dk); font-size: 0.78rem;
+  font-weight: 600; margin-bottom: 0.6rem;
+}
+.level-hours i { margin-right: 4px; }
+
 /* ═══════════════════════════════════════════════════
    ANIMACIONES — Optimizadas para GPU / 60fps
    Sólo se animan opacity y transform (no layout)
@@ -639,7 +773,7 @@ header::after {
 
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
-  .about-grid, .inversion-grid { grid-template-columns: 1fr 1fr; }
+  .about-grid, .inversion-grid, .phases-grid { grid-template-columns: 1fr 1fr; }
   .bitbots-wrap { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
 }
@@ -653,7 +787,7 @@ header::after {
   .gallery-3 { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 540px) {
-  .about-grid, .inversion-grid { grid-template-columns: 1fr; }
+  .about-grid, .inversion-grid, .phases-grid { grid-template-columns: 1fr; }
   .hero-stats { gap: 1.5rem; }
   .stat-divider { display: none; }
   .gallery-3 { grid-template-columns: 1fr; }
