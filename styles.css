@@ -782,14 +782,15 @@ header::after {
 .scroll-top.visible { opacity: 1; transform: translateY(0); }
 .scroll-top:hover { transform: translateY(-3px) scale(1.1); }
 
-/* ── RUTA DE APRENDIZAJE ── */
+/* ── RUTA DE APRENDIZAJE DETALLADA (FIEL A LA IMAGEN) ── */
 .ruta-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2.5rem;
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
 }
+
 .ruta-category {
   background: #fff;
   border: 1px solid var(--card-border);
@@ -800,11 +801,13 @@ header::after {
   flex-direction: column;
   transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
+
 .ruta-category:hover {
   transform: translateY(-5px);
   box-shadow: var(--shadow-lg);
   border-color: var(--electric);
 }
+
 /* Radial glow spot for tilt effect */
 .ruta-category { position: relative; }
 .ruta-category::after {
@@ -825,159 +828,241 @@ header::after {
   font-size: 0.95rem;
   font-weight: 700;
   color: #fff;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.ruta-category-header.bg-blue {
+  background: linear-gradient(135deg, #007BFF, #0056cc);
+  border-bottom: 3px solid #0040aa;
+}
+
+.ruta-category-header.bg-orange {
+  background: linear-gradient(135deg, #2e7d32, #fd7e14); /* Verde a Naranja como en la imagen */
+  border-bottom: 3px solid #d46a00;
+}
+
+.ruta-columns {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  padding: 2rem 1.5rem;
+  flex-grow: 1;
+  align-items: stretch;
+}
+
+.ruta-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 1rem;
+}
+
+.ruta-column-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.82rem;
+  color: var(--cba-navy);
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+  line-height: 1.4;
+  height: 2.4rem; /* altura fija para alinear ilustraciones */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ruta-illustration {
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.2rem;
+  position: relative;
+  width: 100%;
+}
+
+.ruta-column-text {
+  font-size: 0.8rem;
+  color: var(--text-body);
+  line-height: 1.6;
+  margin-top: auto; /* empuja hacia abajo si es necesario */
+}
+
+/* Divider vertical */
+.ruta-divider {
+  width: 1px;
+  background: rgba(0, 40, 85, 0.12);
+  align-self: stretch;
+}
+
+/* Estilos de Ilustraciones específicas */
+.ill-lego-tablet {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+.ill-lego-tablet .ill-lego {
+  font-size: 2.5rem;
+  color: #e53935;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+}
+.ill-lego-tablet .ill-tablet {
+  font-size: 2.8rem;
+  color: #1e88e5;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+}
+
+.ill-kids-collab {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+.ill-kids-collab .ill-kids {
+  font-size: 2.6rem;
+  color: #fb8c00;
+}
+.ill-kids-collab .ill-collab {
+  font-size: 2.2rem;
+  color: #43a047;
+}
+
+.ill-spike-scratch {
   display: flex;
   align-items: center;
   gap: 0.8rem;
 }
-.ruta-category-header.bg-blue {
-  background: linear-gradient(135deg, #007BFF, #0056cc);
+.ill-spike-scratch .ill-spike {
+  font-size: 2.2rem;
+  color: #ffb300;
 }
-.ruta-category-header.bg-orange {
-  background: linear-gradient(135deg, #fd7e14, #e65c00);
-}
-.ruta-cards {
-  padding: 1.8rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  flex-grow: 1;
-}
-.ruta-item {
-  display: flex;
-  gap: 1.2rem;
-  align-items: flex-start;
-  padding-bottom: 1.2rem;
-  border-bottom: 1px solid var(--gray-light);
-}
-.ruta-item:last-child {
-  border-bottom: none;
-  padding-bottom: 0;
-}
-.ruta-item-icon {
+.ill-spike-scratch .ill-microbit {
   font-size: 2rem;
-  background: var(--gray-light);
-  width: 50px;
-  height: 50px;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+  color: #3949ab;
 }
-.ruta-item-content {
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-}
-.ruta-item-content h4 {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 0.88rem;
-  color: var(--cba-navy);
-  font-weight: 700;
-}
-.ruta-age-badge {
-  display: inline-block;
-  font-size: 0.65rem;
-  font-weight: 700;
-  padding: 0.15rem 0.6rem;
-  border-radius: 4px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  align-self: flex-start;
-  background: rgba(0,123,255,0.08);
-  color: #0056cc;
-}
-.ruta-age-badge.highlight-orange {
-  background: rgba(253, 126, 20, 0.1);
-  color: #e65c00;
-}
-.ruta-hours {
-  font-size: 0.78rem;
-  color: var(--text-muted);
-  font-weight: 600;
-}
-.ruta-hours i {
-  color: var(--electric);
-  margin-right: 4px;
-}
-.ruta-desc {
-  font-size: 0.82rem;
-  color: var(--text-body);
-  line-height: 1.6;
+.ill-spike-scratch .ill-scratch {
+  font-size: 2.4rem;
+  color: #f57c00;
 }
 
-/* Timeline Flow */
-.ruta-flow {
-  max-width: 900px;
-  margin: 3.5rem auto 0;
-  background: linear-gradient(135deg, rgba(0,40,85,0.02), rgba(0,123,255,0.02));
-  border: 1px dashed rgba(0,123,255,0.2);
-  border-radius: var(--radius);
-  padding: 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  gap: 1rem;
-}
-.flow-step {
+.ill-clocks-cal {
   display: flex;
   align-items: center;
   gap: 1.2rem;
 }
-.flow-circle {
-  width: 65px;
-  height: 65px;
-  border-radius: 50%;
+.ill-clocks-cal .clocks-mini-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+}
+.ill-clocks-cal .clocks-mini-grid i {
+  font-size: 1.1rem;
+  color: #007BFF;
+}
+.ill-clocks-cal .ill-cal {
+  font-size: 2.6rem;
+  color: #e53935;
+}
+
+/* ── CHEVRON FLOW (FIDELIDAD TOTAL) ── */
+.ruta-timeline-chevrons {
+  max-width: 1100px;
+  margin: 3.5rem auto 0;
+  display: grid;
+  grid-template-columns: 1.2fr 1.3fr 1.5fr; /* Proporciones aproximadas de tamaño */
+  gap: 0.6rem;
+  padding: 0.5rem;
+}
+
+.chevron-step {
+  position: relative;
+  padding: 1.2rem 1.8rem 1.2rem 2.5rem;
+  color: #fff;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  color: #fff;
-  font-family: 'Orbitron', sans-serif;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
-.flow-circle.blue {
-  background: linear-gradient(135deg, #7ec8ff, #007BFF);
+
+/* Colores de los Chevrons basados en la imagen */
+.step-yellow {
+  background: #ffb74d; /* Amarillo/Dorado claro */
+  clip-path: polygon(0 0, 92% 0, 100% 50%, 92% 100%, 0 100%);
+  padding-left: 1.8rem; /* El primero no tiene sangría a la izquierda */
 }
-.flow-circle.dark-blue {
-  background: linear-gradient(135deg, #0056cc, #002855);
+
+.step-blue {
+  background: #1e88e5; /* Azul */
+  clip-path: polygon(0 0, 92% 0, 100% 50%, 92% 100%, 0 100%, 6% 50%);
 }
-.flow-circle.orange {
-  background: linear-gradient(135deg, #fd7e14, #d44d00);
+
+.step-green-orange {
+  background: linear-gradient(90deg, #43a047 0%, #ff8f00 100%); /* Verde a Naranja */
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 5% 50%);
+  padding-right: 1.8rem; /* El último no tiene flecha saliente a la derecha */
 }
-.flow-number {
-  font-size: 1.4rem;
-  font-weight: 900;
-  line-height: 1;
+
+.chevron-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
 }
-.flow-unit {
-  font-size: 0.55rem;
-  text-transform: uppercase;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-}
-.flow-info h5 {
+
+.step-title {
   font-family: 'Orbitron', sans-serif;
   font-size: 0.85rem;
-  color: var(--cba-navy);
-  margin-bottom: 0.2rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
 }
-.flow-info p {
-  font-size: 0.78rem;
-  color: var(--text-muted);
+
+.step-details {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  border-top: 1px solid rgba(255,255,255,0.25);
+  padding-top: 0.6rem;
 }
-.flow-arrow {
-  color: var(--gray-mid);
-  font-size: 1.2rem;
+
+.step-detail-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.step-detail-icons {
+  display: flex;
+  gap: 0.3rem;
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 1.1rem;
+}
+
+.step-detail-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.step-detail-text .num {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 800;
+}
+
+.step-detail-text .lbl {
+  font-size: 0.68rem;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 500;
 }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
   .about-grid, .inversion-grid, .phases-grid { grid-template-columns: 1fr 1fr; }
   .ruta-container { grid-template-columns: 1fr; gap: 2rem; }
-  .ruta-flow { flex-direction: column; align-items: flex-start; gap: 1.5rem; padding: 1.5rem; }
-  .flow-arrow { transform: rotate(90deg); align-self: center; margin: -0.5rem 0; }
+  .ruta-columns { grid-template-columns: 1fr; }
+  .ruta-divider { height: 1px; width: 100%; margin: 1.5rem 0; }
+  .ruta-column-title { height: auto; }
+  .ruta-timeline-chevrons { grid-template-columns: 1fr; gap: 1.2rem; }
+  .step-yellow, .step-blue, .step-green-orange { clip-path: none; border-radius: var(--radius); padding: 1.5rem; }
   .bitbots-wrap { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
 }
