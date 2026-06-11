@@ -782,9 +782,202 @@ header::after {
 .scroll-top.visible { opacity: 1; transform: translateY(0); }
 .scroll-top:hover { transform: translateY(-3px) scale(1.1); }
 
+/* ── RUTA DE APRENDIZAJE ── */
+.ruta-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.ruta-category {
+  background: #fff;
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.ruta-category:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--electric);
+}
+/* Radial glow spot for tilt effect */
+.ruta-category { position: relative; }
+.ruta-category::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius);
+  background: radial-gradient(circle at var(--gx, 50%) var(--gy, 50%), rgba(0,123,255,0.06), transparent 55%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+.ruta-category:hover::after { opacity: 1; }
+
+.ruta-category-header {
+  padding: 1.2rem 1.8rem;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.ruta-category-header.bg-blue {
+  background: linear-gradient(135deg, #007BFF, #0056cc);
+}
+.ruta-category-header.bg-orange {
+  background: linear-gradient(135deg, #fd7e14, #e65c00);
+}
+.ruta-cards {
+  padding: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  flex-grow: 1;
+}
+.ruta-item {
+  display: flex;
+  gap: 1.2rem;
+  align-items: flex-start;
+  padding-bottom: 1.2rem;
+  border-bottom: 1px solid var(--gray-light);
+}
+.ruta-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+.ruta-item-icon {
+  font-size: 2rem;
+  background: var(--gray-light);
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+}
+.ruta-item-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.ruta-item-content h4 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.88rem;
+  color: var(--cba-navy);
+  font-weight: 700;
+}
+.ruta-age-badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 0.15rem 0.6rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  align-self: flex-start;
+  background: rgba(0,123,255,0.08);
+  color: #0056cc;
+}
+.ruta-age-badge.highlight-orange {
+  background: rgba(253, 126, 20, 0.1);
+  color: #e65c00;
+}
+.ruta-hours {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+.ruta-hours i {
+  color: var(--electric);
+  margin-right: 4px;
+}
+.ruta-desc {
+  font-size: 0.82rem;
+  color: var(--text-body);
+  line-height: 1.6;
+}
+
+/* Timeline Flow */
+.ruta-flow {
+  max-width: 900px;
+  margin: 3.5rem auto 0;
+  background: linear-gradient(135deg, rgba(0,40,85,0.02), rgba(0,123,255,0.02));
+  border: 1px dashed rgba(0,123,255,0.2);
+  border-radius: var(--radius);
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 1rem;
+}
+.flow-step {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+.flow-circle {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-family: 'Orbitron', sans-serif;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+.flow-circle.blue {
+  background: linear-gradient(135deg, #7ec8ff, #007BFF);
+}
+.flow-circle.dark-blue {
+  background: linear-gradient(135deg, #0056cc, #002855);
+}
+.flow-circle.orange {
+  background: linear-gradient(135deg, #fd7e14, #d44d00);
+}
+.flow-number {
+  font-size: 1.4rem;
+  font-weight: 900;
+  line-height: 1;
+}
+.flow-unit {
+  font-size: 0.55rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+.flow-info h5 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.85rem;
+  color: var(--cba-navy);
+  margin-bottom: 0.2rem;
+}
+.flow-info p {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+.flow-arrow {
+  color: var(--gray-mid);
+  font-size: 1.2rem;
+}
+
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
   .about-grid, .inversion-grid, .phases-grid { grid-template-columns: 1fr 1fr; }
+  .ruta-container { grid-template-columns: 1fr; gap: 2rem; }
+  .ruta-flow { flex-direction: column; align-items: flex-start; gap: 1.5rem; padding: 1.5rem; }
+  .flow-arrow { transform: rotate(90deg); align-self: center; margin: -0.5rem 0; }
   .bitbots-wrap { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
 }

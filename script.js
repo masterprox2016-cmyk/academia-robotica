@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
   statNums.forEach(n => statObserver.observe(n));
 
   /* ── 3D Tilt on cards — throttled via rAF ── */
-  document.querySelectorAll('.level-card, .staff-card, .about-card, .inv-card, .phase-card').forEach(card => {
+  document.querySelectorAll('.level-card, .staff-card, .about-card, .inv-card, .phase-card, .ruta-category').forEach(card => {
     let rafId = null;
     let lastX = 0, lastY = 0;
 

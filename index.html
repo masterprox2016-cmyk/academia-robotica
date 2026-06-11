@@ -28,6 +28,7 @@
   <nav id="main-nav" role="navigation" aria-label="Menú principal">
     <a href="#inicio"         class="active" id="nav-inicio">Inicio</a>
     <a href="#nosotros"       id="nav-nosotros">Nosotros</a>
+    <a href="#ruta-aprendizaje" id="nav-ruta">Ruta</a>
     <a href="#plan-formacion" id="nav-plan-formacion">Plan de Formación</a>
     <a href="#niveles"        id="nav-niveles">Niveles</a>
     <a href="#seleccion"      id="nav-seleccion">Selección</a>
@@ -173,9 +174,119 @@
 </section>
 
 <!-- ══════════════════════════════════════
+     RUTA DE APRENDIZAJE
+══════════════════════════════════════ -->
+<section id="ruta-aprendizaje" class="section-light">
+  <div class="section-header reveal">
+    <span class="section-tag">Ruta Educativa</span>
+    <h2 class="section-title">Ruta de <span class="accent">Aprendizaje</span> Tecnológico</h2>
+    <p class="section-subtitle">
+      Esta guía detalla la oferta educativa tecnológica dividida por niveles, desde la iniciación en preescolar hasta el desarrollo de habilidades complejas en programación y robótica.
+    </p>
+    <span class="divider-line"></span>
+  </div>
+
+  <div class="ruta-container">
+    <!-- Bloque 1: Iniciación y Primeros Pasos -->
+    <div class="ruta-category reveal">
+      <div class="ruta-category-header bg-blue">
+        <i class="fas fa-child"></i> Iniciación y Primeros Pasos (4 a 7 años)
+      </div>
+      <div class="ruta-cards">
+        <!-- Tarjeta: Nivel Infantil -->
+        <div class="ruta-item">
+          <div class="ruta-item-icon">🧩</div>
+          <div class="ruta-item-content">
+            <h4>Nivel Infantil: Creatividad Digital</h4>
+            <span class="ruta-age-badge">4 - 5 Años</span>
+            <p class="ruta-hours"><i class="fas fa-clock"></i> 2 horas semanales</p>
+            <p class="ruta-desc">Centradas en el uso de Legos y herramientas de dibujo como Paint para desarrollar la motricidad fina y la expresión creativa.</p>
+          </div>
+        </div>
+        <!-- Tarjeta: Primer Grado -->
+        <div class="ruta-item">
+          <div class="ruta-item-icon">🤝</div>
+          <div class="ruta-item-content">
+            <h4>Primer Grado: Construcción y Colaboración</h4>
+            <span class="ruta-age-badge">6 - 7 Años</span>
+            <p class="ruta-hours"><i class="fas fa-clock"></i> 4 horas semanales</p>
+            <p class="ruta-desc">Enfocadas de lunes a jueves en Legos y dinámicas de trabajo en equipo, estimulando la socialización y el diseño estructural.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bloque 2: Especialización y Resolución de Problemas -->
+    <div class="ruta-category reveal">
+      <div class="ruta-category-header bg-orange">
+        <i class="fas fa-brain"></i> Especialización y Resolución de Problemas (8+ años)
+      </div>
+      <div class="ruta-cards">
+        <!-- Tarjeta: Segundo Grado+ -->
+        <div class="ruta-item">
+          <div class="ruta-item-icon">🤖</div>
+          <div class="ruta-item-content">
+            <h4>Segundo Grado+: Programación Avanzada</h4>
+            <span class="ruta-age-badge">8+ Años</span>
+            <p class="ruta-hours"><i class="fas fa-clock"></i> 6 horas semanales</p>
+            <p class="ruta-desc">Utilizando herramientas avanzadas como Lego Spike, placas Micro:bit y Scratch para el desarrollo de algoritmos lógicos complejos.</p>
+          </div>
+        </div>
+        <!-- Tarjeta: Horarios -->
+        <div class="ruta-item">
+          <div class="ruta-item-icon">📅</div>
+          <div class="ruta-item-content">
+            <h4>Intensidad Horaria y Enfoque Práctico</h4>
+            <span class="ruta-age-badge highlight-orange">Horario CBA</span>
+            <p class="ruta-hours"><i class="fas fa-calendar-alt"></i> Horarios Disponibles</p>
+            <p class="ruta-desc">Sesiones distribuidas de lunes a jueves, ideales en bloques de <strong>4:00 PM a 6:00 PM</strong> para el desarrollo de retos prácticos.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Flujo Visual (Timeline) al final -->
+  <div class="ruta-flow reveal">
+    <div class="flow-step">
+      <div class="flow-circle blue">
+        <div class="flow-number">2</div>
+        <div class="flow-unit">Horas</div>
+      </div>
+      <div class="flow-info">
+        <h5>Infantil (4-5 años)</h5>
+        <p>Legos y Paint</p>
+      </div>
+    </div>
+    <div class="flow-arrow"><i class="fas fa-chevron-right"></i></div>
+    <div class="flow-step">
+      <div class="flow-circle dark-blue">
+        <div class="flow-number">4</div>
+        <div class="flow-unit">Horas</div>
+      </div>
+      <div class="flow-info">
+        <h5>Primer Grado (6-7 años)</h5>
+        <p>Legos y Trabajo en Equipo</p>
+      </div>
+    </div>
+    <div class="flow-arrow"><i class="fas fa-chevron-right"></i></div>
+    <div class="flow-step">
+      <div class="flow-circle orange">
+        <div class="flow-number">6</div>
+        <div class="flow-unit">Horas</div>
+      </div>
+      <div class="flow-info">
+        <h5>Segundo Grado+ (8+)</h5>
+        <p>Spike, Micro:bit y Scratch</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
      PLAN DE FORMACIÓN Y COMPETENCIA
 ══════════════════════════════════════ -->
-<section id="plan-formacion" class="section-light">
+<section id="plan-formacion" class="section-gray">
   <div class="section-header reveal">
     <span class="section-tag">Metodología</span>
     <h2 class="section-title">Plan de <span class="accent">Formación</span> y Competencia</h2>
@@ -831,6 +942,8 @@
       <ul>
         <li><a href="#inicio">Inicio</a></li>
         <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#ruta-aprendizaje">Ruta de Aprendizaje</a></li>
+        <li><a href="#plan-formacion">Plan de Formación</a></li>
         <li><a href="#niveles">Niveles Académicos</a></li>
         <li><a href="#staff">Staff Docente</a></li>
         <li><a href="#inversion">Plan de Inversión</a></li>
