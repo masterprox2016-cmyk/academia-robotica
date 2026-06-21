@@ -1085,8 +1085,167 @@ header::after {
 
 
 /* ══════════════════════════════════════════
+   HORARIO DE CLASES – PREMIUM REDESIGN
+══════════════════════════════════════════ */
+.horario-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Base card */
+.hcard {
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(8px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.hcard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.4);
+}
+
+/* Color accent strip per card type */
+.hcard-green  { border-top: 3px solid #22c55e; }
+.hcard-blue   { border-top: 3px solid var(--electric); }
+.hcard-gold   { border-top: 3px solid var(--gold); }
+.hcard-navy   { border-top: 3px solid #a78bfa; }
+
+.hcard-green:hover  { border-color: #22c55e; }
+.hcard-blue:hover   { border-color: var(--electric); }
+.hcard-gold:hover   { border-color: var(--gold); }
+.hcard-navy:hover   { border-color: #a78bfa; }
+
+/* Card Header */
+.hcard-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.2rem 1.4rem;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  background: rgba(0,0,0,0.15);
+}
+.hcard-icon {
+  font-size: 2rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.hcard-grade {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.5px;
+}
+.hcard-hrs {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.5);
+  margin-top: 0.2rem;
+}
+.hcard-hrs i { margin-right: 0.3rem; }
+
+/* Days block */
+.hcard-days {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+.hday {
+  padding: 1rem 1.2rem;
+  border-right: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.hday:last-child { border-right: none; }
+
+/* Day label pills */
+.hday-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 0.2rem 0.65rem;
+  border-radius: 50px;
+  align-self: flex-start;
+}
+.lunes     { background: rgba(34,197,94,0.2);  color: #86efac; }
+.martes    { background: rgba(59,130,246,0.2); color: #93c5fd; }
+.miercoles { background: rgba(234,179,8,0.2);  color: #fde047; }
+.jueves    { background: rgba(168,85,247,0.2); color: #d8b4fe; }
+
+/* Tool tags within day */
+.hday-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+.htool {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.25rem 0.6rem;
+  border-radius: 50px;
+  white-space: nowrap;
+}
+.htool-green  { background: rgba(34,197,94,0.15);  border: 1px solid rgba(34,197,94,0.4);  color: #86efac; }
+.htool-orange { background: rgba(249,115,22,0.15); border: 1px solid rgba(249,115,22,0.4); color: #fdba74; }
+.htool-teal   { background: rgba(20,184,166,0.15); border: 1px solid rgba(20,184,166,0.4); color: #5eead4; }
+.htool-red    { background: rgba(239,68,68,0.15);  border: 1px solid rgba(239,68,68,0.4);  color: #fca5a5; }
+.htool-purple { background: rgba(168,85,247,0.15); border: 1px solid rgba(168,85,247,0.4); color: #d8b4fe; }
+
+/* Time */
+.hday-time {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.35);
+  margin-top: auto;
+}
+
+/* Legend */
+.horario-leyenda {
+  max-width: 1200px;
+  margin: 2.5rem auto 0;
+  padding: 1rem 1.5rem;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+}
+.leyenda-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.5);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+.leyenda-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .horario-grid { grid-template-columns: 1fr; }
+  .hcard-days { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 400px) {
+  .hcard-days { grid-template-columns: 1fr; }
+  .hday { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
+}
+
+/* ══════════════════════════════════════════
    ORGANIZACIONES COMPETITIVAS
 ══════════════════════════════════════════ */
+
 .org-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));

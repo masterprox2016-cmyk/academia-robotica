@@ -760,75 +760,205 @@
 <!-- ══════════════════════════════════════
      HORARIOS DE CLASES
 ══════════════════════════════════════ -->
-<section id="horarios" class="section-light" style="background-color: var(--gray-light); padding-top: 5rem; padding-bottom: 5rem;">
+<section id="horarios" class="section-navy" style="padding: 5rem 2rem;">
   <div class="section-header reveal">
-    <span class="section-tag" style="background:var(--electric); color:#fff; border-color:var(--electric);">Planificación</span>
-    <h2 class="section-title">Horario <span class="accent" style="color:var(--electric);">de Clases</span></h2>
-    <p class="section-subtitle">
-      Conoce la distribución de herramientas tecnológicas según el grado escolar
-      y las horas correspondientes a la semana.
+    <span class="section-tag gold">Planificación Semanal</span>
+    <h2 class="section-title white">Horario <span class="gold-acc">de Clases</span></h2>
+    <p class="section-subtitle white">
+      Distribución de herramientas y actividades según el grado escolar.<br>
+      <span style="color:rgba(255,255,255,0.5); font-size:0.85rem;">Lunes a Jueves · 4:00 pm – 6:00 pm</span>
     </p>
-    <span class="divider-line" style="background:var(--electric);"></span>
+    <span class="divider-line"></span>
   </div>
 
-  <div style="max-width:1100px; margin:0 auto; display:grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap:1.5rem; padding: 0 1.5rem;">
-    
+  <div class="horario-grid">
+
     <!-- 4 y 5 años -->
-    <div class="event-item reveal" style="background:#fff; border:1px solid rgba(0,0,0,0.08); border-radius:16px; padding:1.5rem; box-shadow:0 8px 20px rgba(0,0,0,0.04); transition: transform 0.3s ease;">
-      <div style="color:var(--cba-navy); font-family:'Orbitron',sans-serif; font-weight:700; font-size:1.1rem; margin-bottom:1rem; border-bottom:1px solid rgba(0,0,0,0.05); padding-bottom:0.5rem; display:flex; justify-content:space-between; align-items:center;">
-        <span>🧒 4 y 5 años</span> <span style="font-size:0.75rem; color:#fff; background:var(--cba-navy); padding:0.2rem 0.6rem; border-radius:50px; font-family:'Inter',sans-serif; font-weight:600;">2 hrs</span>
+    <div class="hcard reveal hcard-green">
+      <div class="hcard-header">
+        <div class="hcard-icon">🧒</div>
+        <div>
+          <div class="hcard-grade">4 y 5 años</div>
+          <div class="hcard-hrs"><i class="fas fa-clock"></i> 2 hrs / semana</div>
+        </div>
       </div>
-      <p style="font-size:0.9rem; margin-bottom:0.4rem; color:var(--text-body);"><strong>Lunes:</strong> Kid K-Nex <span style="color:#666; font-size:0.8rem;">(4:00 - 5:00 pm)</span></p>
-      <p style="font-size:0.9rem; color:var(--text-body);"><strong>Miércoles:</strong> Paint y Scratch <span style="color:#666; font-size:0.8rem;">(4:00 - 5:00 pm)</span></p>
+      <div class="hcard-days">
+        <div class="hday">
+          <span class="hday-label lunes">Lunes</span>
+          <div class="hday-tools">
+            <span class="htool htool-green">Kid K-Nex</span>
+          </div>
+          <span class="hday-time">4:00 – 5:00 pm</span>
+        </div>
+        <div class="hday">
+          <span class="hday-label miercoles">Miércoles</span>
+          <div class="hday-tools">
+            <span class="htool htool-purple">Paint</span>
+            <span class="htool htool-orange">Scratch</span>
+          </div>
+          <span class="hday-time">4:00 – 5:00 pm</span>
+        </div>
+      </div>
     </div>
 
     <!-- 1er Grado -->
-    <div class="event-item reveal" style="background:#fff; border:1px solid rgba(0,0,0,0.08); border-radius:16px; padding:1.5rem; box-shadow:0 8px 20px rgba(0,0,0,0.04); transition: transform 0.3s ease;">
-      <div style="color:var(--electric); font-family:'Orbitron',sans-serif; font-weight:700; font-size:1.1rem; margin-bottom:1rem; border-bottom:1px solid rgba(0,0,0,0.05); padding-bottom:0.5rem; display:flex; justify-content:space-between; align-items:center;">
-        <span>🎒 1er grado</span> <span style="font-size:0.75rem; color:#fff; background:var(--electric); padding:0.2rem 0.6rem; border-radius:50px; font-family:'Inter',sans-serif; font-weight:600;">3 hrs</span>
+    <div class="hcard reveal hcard-blue">
+      <div class="hcard-header">
+        <div class="hcard-icon">🎒</div>
+        <div>
+          <div class="hcard-grade">1er Grado</div>
+          <div class="hcard-hrs"><i class="fas fa-clock"></i> 3 hrs / semana</div>
+        </div>
       </div>
-      <p style="font-size:0.9rem; margin-bottom:0.4rem; color:var(--text-body);"><strong>Lunes:</strong> K-Nex <span style="color:#666; font-size:0.8rem;">(5:00 - 6:00 pm)</span></p>
-      <p style="font-size:0.9rem; color:var(--text-body);"><strong>Miércoles:</strong> K-Nex <span style="color:#666; font-size:0.8rem;">(4:00 - 5:00 pm)</span> <br> <span style="color:transparent;">Miércoles:</span> y Scratch <span style="color:#666; font-size:0.8rem;">(5:00 - 6:00 pm)</span></p>
+      <div class="hcard-days">
+        <div class="hday">
+          <span class="hday-label lunes">Lunes</span>
+          <div class="hday-tools">
+            <span class="htool htool-green">K-Nex</span>
+          </div>
+          <span class="hday-time">5:00 – 6:00 pm</span>
+        </div>
+        <div class="hday">
+          <span class="hday-label miercoles">Miércoles</span>
+          <div class="hday-tools">
+            <span class="htool htool-green">K-Nex</span>
+            <span class="htool htool-orange">Scratch</span>
+          </div>
+          <span class="hday-time">4:00 – 6:00 pm</span>
+        </div>
+      </div>
     </div>
 
     <!-- 2do Grado -->
-    <div class="event-item reveal" style="background:#fff; border:1px solid rgba(0,0,0,0.08); border-radius:16px; padding:1.5rem; box-shadow:0 8px 20px rgba(0,0,0,0.04); transition: transform 0.3s ease;">
-      <div style="color:var(--electric); font-family:'Orbitron',sans-serif; font-weight:700; font-size:1.1rem; margin-bottom:1rem; border-bottom:1px solid rgba(0,0,0,0.05); padding-bottom:0.5rem; display:flex; justify-content:space-between; align-items:center;">
-        <span>🚀 2do grado</span> <span style="font-size:0.75rem; color:#fff; background:var(--electric); padding:0.2rem 0.6rem; border-radius:50px; font-family:'Inter',sans-serif; font-weight:600;">4 hrs</span>
+    <div class="hcard reveal hcard-blue">
+      <div class="hcard-header">
+        <div class="hcard-icon">🚀</div>
+        <div>
+          <div class="hcard-grade">2do Grado</div>
+          <div class="hcard-hrs"><i class="fas fa-clock"></i> 4 hrs / semana</div>
+        </div>
       </div>
-      <p style="font-size:0.9rem; margin-bottom:0.4rem; color:var(--text-body);"><strong>Martes:</strong> Scratch <span style="color:#666; font-size:0.8rem;">(4:00 - 5:00 pm)</span> <br> <span style="color:transparent;">Martes:</span> y Micro:bit <span style="color:#666; font-size:0.8rem;">(5:00 - 6:00 pm)</span></p>
-      <p style="font-size:0.9rem; color:var(--text-body);"><strong>Jueves:</strong> K-Nex <span style="color:#666; font-size:0.8rem;">(4:00 - 5:00 pm)</span> <br> <span style="color:transparent;">Jueves:</span> y Lego Spike <span style="color:#666; font-size:0.8rem;">(5:00 - 6:00 pm)</span></p>
+      <div class="hcard-days">
+        <div class="hday">
+          <span class="hday-label martes">Martes</span>
+          <div class="hday-tools">
+            <span class="htool htool-orange">Scratch</span>
+            <span class="htool htool-teal">Micro:bit</span>
+          </div>
+          <span class="hday-time">4:00 – 6:00 pm</span>
+        </div>
+        <div class="hday">
+          <span class="hday-label jueves">Jueves</span>
+          <div class="hday-tools">
+            <span class="htool htool-green">K-Nex</span>
+            <span class="htool htool-red">Lego Spike</span>
+          </div>
+          <span class="hday-time">4:00 – 6:00 pm</span>
+        </div>
+      </div>
     </div>
 
     <!-- 3er Grado -->
-    <div class="event-item reveal" style="background:#fff; border:1px solid rgba(0,0,0,0.08); border-radius:16px; padding:1.5rem; box-shadow:0 8px 20px rgba(0,0,0,0.04); transition: transform 0.3s ease;">
-      <div style="color:var(--gold-dk); font-family:'Orbitron',sans-serif; font-weight:700; font-size:1.1rem; margin-bottom:1rem; border-bottom:1px solid rgba(0,0,0,0.05); padding-bottom:0.5rem; display:flex; justify-content:space-between; align-items:center;">
-        <span>💡 3er grado</span> <span style="font-size:0.75rem; color:#000; background:var(--gold); padding:0.2rem 0.6rem; border-radius:50px; font-family:'Inter',sans-serif; font-weight:600;">4 hrs</span>
+    <div class="hcard reveal hcard-gold">
+      <div class="hcard-header">
+        <div class="hcard-icon">💡</div>
+        <div>
+          <div class="hcard-grade">3er Grado</div>
+          <div class="hcard-hrs"><i class="fas fa-clock"></i> 4 hrs / semana</div>
+        </div>
       </div>
-      <p style="font-size:0.9rem; margin-bottom:0.4rem; color:var(--text-body);"><strong>Lunes:</strong> Scratch <span style="color:#666; font-size:0.8rem;">(4:00 - 5:00 pm)</span> <br> <span style="color:transparent;">Lunes:</span> y Micro:bit <span style="color:#666; font-size:0.8rem;">(5:00 - 6:00 pm)</span></p>
-      <p style="font-size:0.9rem; color:var(--text-body);"><strong>Miércoles:</strong> Lego Spike <span style="color:#666; font-size:0.8rem;">(4:00 - 5:00 pm)</span> <br> <span style="color:transparent;">Miércoles:</span> y K-Nex <span style="color:#666; font-size:0.8rem;">(5:00 - 6:00 pm)</span></p>
+      <div class="hcard-days">
+        <div class="hday">
+          <span class="hday-label lunes">Lunes</span>
+          <div class="hday-tools">
+            <span class="htool htool-orange">Scratch</span>
+            <span class="htool htool-teal">Micro:bit</span>
+          </div>
+          <span class="hday-time">4:00 – 6:00 pm</span>
+        </div>
+        <div class="hday">
+          <span class="hday-label miercoles">Miércoles</span>
+          <div class="hday-tools">
+            <span class="htool htool-red">Lego Spike</span>
+            <span class="htool htool-green">K-Nex</span>
+          </div>
+          <span class="hday-time">4:00 – 6:00 pm</span>
+        </div>
+      </div>
     </div>
 
     <!-- 4to Grado -->
-    <div class="event-item reveal" style="background:#fff; border:1px solid rgba(0,0,0,0.08); border-radius:16px; padding:1.5rem; box-shadow:0 8px 20px rgba(0,0,0,0.04); transition: transform 0.3s ease;">
-      <div style="color:var(--gold-dk); font-family:'Orbitron',sans-serif; font-weight:700; font-size:1.1rem; margin-bottom:1rem; border-bottom:1px solid rgba(0,0,0,0.05); padding-bottom:0.5rem; display:flex; justify-content:space-between; align-items:center;">
-        <span>⚙️ 4to grado</span> <span style="font-size:0.75rem; color:#000; background:var(--gold); padding:0.2rem 0.6rem; border-radius:50px; font-family:'Inter',sans-serif; font-weight:600;">4 hrs</span>
+    <div class="hcard reveal hcard-gold">
+      <div class="hcard-header">
+        <div class="hcard-icon">⚙️</div>
+        <div>
+          <div class="hcard-grade">4to Grado</div>
+          <div class="hcard-hrs"><i class="fas fa-clock"></i> 4 hrs / semana</div>
+        </div>
       </div>
-      <p style="font-size:0.9rem; margin-bottom:0.4rem; color:var(--text-body);"><strong>Martes:</strong> Micro:bit <span style="color:#666; font-size:0.8rem;">(4:00 - 5:00 pm)</span> <br> <span style="color:transparent;">Martes:</span> y Scratch <span style="color:#666; font-size:0.8rem;">(5:00 - 6:00 pm)</span></p>
-      <p style="font-size:0.9rem; color:var(--text-body);"><strong>Jueves:</strong> Lego Spike <span style="color:#666; font-size:0.8rem;">(4:00 - 5:00 pm)</span> <br> <span style="color:transparent;">Jueves:</span> y K-Nex <span style="color:#666; font-size:0.8rem;">(5:00 - 6:00 pm)</span></p>
+      <div class="hcard-days">
+        <div class="hday">
+          <span class="hday-label martes">Martes</span>
+          <div class="hday-tools">
+            <span class="htool htool-teal">Micro:bit</span>
+            <span class="htool htool-orange">Scratch</span>
+          </div>
+          <span class="hday-time">4:00 – 6:00 pm</span>
+        </div>
+        <div class="hday">
+          <span class="hday-label jueves">Jueves</span>
+          <div class="hday-tools">
+            <span class="htool htool-red">Lego Spike</span>
+            <span class="htool htool-green">K-Nex</span>
+          </div>
+          <span class="hday-time">4:00 – 6:00 pm</span>
+        </div>
+      </div>
     </div>
 
     <!-- 5to y 6to Grado -->
-    <div class="event-item reveal" style="background:#fff; border:1px solid rgba(0,0,0,0.08); border-radius:16px; padding:1.5rem; box-shadow:0 8px 20px rgba(0,0,0,0.04); transition: transform 0.3s ease;">
-      <div style="color:var(--cba-navy); font-family:'Orbitron',sans-serif; font-weight:700; font-size:1.1rem; margin-bottom:1rem; border-bottom:1px solid rgba(0,0,0,0.05); padding-bottom:0.5rem; display:flex; justify-content:space-between; align-items:center;">
-        <span>🏆 5to y 6to</span> <span style="font-size:0.75rem; color:#fff; background:var(--cba-navy); padding:0.2rem 0.6rem; border-radius:50px; font-family:'Inter',sans-serif; font-weight:600;">4 hrs</span>
+    <div class="hcard reveal hcard-navy">
+      <div class="hcard-header">
+        <div class="hcard-icon">🏆</div>
+        <div>
+          <div class="hcard-grade">5to y 6to Grado</div>
+          <div class="hcard-hrs"><i class="fas fa-clock"></i> 4 hrs / semana</div>
+        </div>
       </div>
-      <p style="font-size:0.9rem; margin-bottom:0.4rem; color:var(--text-body);"><strong>Lunes:</strong> Micro:bit <span style="color:#666; font-size:0.8rem;">(4:00 - 5:00 pm)</span> <br> <span style="color:transparent;">Lunes:</span> y Scratch <span style="color:#666; font-size:0.8rem;">(5:00 - 6:00 pm)</span></p>
-      <p style="font-size:0.9rem; color:var(--text-body);"><strong>Miércoles:</strong> K-Nex <span style="color:#666; font-size:0.8rem;">(4:00 - 5:00 pm)</span> <br> <span style="color:transparent;">Miércoles:</span> y Lego Spike <span style="color:#666; font-size:0.8rem;">(5:00 - 6:00 pm)</span></p>
+      <div class="hcard-days">
+        <div class="hday">
+          <span class="hday-label lunes">Lunes</span>
+          <div class="hday-tools">
+            <span class="htool htool-teal">Micro:bit</span>
+            <span class="htool htool-orange">Scratch</span>
+          </div>
+          <span class="hday-time">4:00 – 6:00 pm</span>
+        </div>
+        <div class="hday">
+          <span class="hday-label miercoles">Miércoles</span>
+          <div class="hday-tools">
+            <span class="htool htool-green">K-Nex</span>
+            <span class="htool htool-red">Lego Spike</span>
+          </div>
+          <span class="hday-time">4:00 – 6:00 pm</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Leyenda de herramientas -->
+  <div class="horario-leyenda reveal">
+    <span class="leyenda-title"><i class="fas fa-info-circle"></i> Herramientas</span>
+    <div class="leyenda-items">
+      <span class="htool htool-green">K-Nex / Kid K-Nex</span>
+      <span class="htool htool-orange">Scratch / Paint</span>
+      <span class="htool htool-teal">Micro:bit</span>
+      <span class="htool htool-red">Lego Spike</span>
     </div>
   </div>
-</section>
 
+</section>
 
 
 <!-- ══════════════════════════════════════
