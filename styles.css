@@ -1373,33 +1373,32 @@ header::after {
 
 .sel-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
-  gap: 1.8rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.6rem;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
 }
 
 .sel-card {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 20px;
+  background: #c8dff5;
+  border-radius: 16px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.25);
 }
 .sel-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 20px 50px rgba(0,0,0,0.45);
-  border-color: rgba(255,215,0,0.45);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.4);
 }
 
 .sel-img-wrap {
   width: 100%;
   aspect-ratio: 1 / 1;
   overflow: hidden;
-  background: #001428;
+  background: #a8c8e8;
 }
 .sel-img {
   width: 100%;
@@ -1423,54 +1422,55 @@ header::after {
 }
 
 .sel-body {
-  padding: 1.2rem 1.4rem 1.4rem;
+  padding: 1rem 1.2rem 1.3rem;
   display: flex;
   flex-direction: column;
-  gap: 0.7rem;
+  gap: 0.55rem;
   flex: 1;
+  background: #c8dff5;
 }
 .sel-name {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 0.92rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.93rem;
   font-weight: 700;
-  color: #fff;
+  color: #001428;
 }
 .sel-desc {
-  font-size: 0.83rem;
-  color: rgba(255,255,255,0.62);
+  font-size: 0.81rem;
+  color: #1a3050;
   line-height: 1.6;
   flex: 1;
 }
 
 /* Ruta de competencias */
 .sel-ruta {
-  background: rgba(0,0,0,0.25);
-  border: 1px solid rgba(255,215,0,0.2);
-  border-radius: 12px;
-  padding: 0.75rem 1rem;
+  background: #002855;
+  border-radius: 10px;
+  padding: 0.65rem 0.9rem;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.45rem;
+  margin-top: 0.2rem;
 }
 .ruta-title {
-  font-size: 0.75rem;
-  font-weight: 700;
+  font-size: 0.7rem;
+  font-weight: 800;
   color: var(--gold);
   text-transform: uppercase;
-  letter-spacing: 0.8px;
+  letter-spacing: 1px;
 }
 .ruta-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem;
+  gap: 0.35rem;
 }
 .ruta-tag {
-  background: rgba(255,215,0,0.1);
-  border: 1px solid rgba(255,215,0,0.3);
-  color: rgba(255,255,255,0.85);
-  font-size: 0.72rem;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #e8f0ff;
+  font-size: 0.71rem;
   font-weight: 600;
-  padding: 0.25rem 0.65rem;
+  padding: 0.22rem 0.65rem;
   border-radius: 50px;
   white-space: nowrap;
 }
