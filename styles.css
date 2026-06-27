@@ -1260,7 +1260,7 @@ header::after {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1rem;
+  gap: 2rem;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem 1rem;
@@ -1273,27 +1273,20 @@ header::after {
   background: rgba(255,255,255,0.07);
   border: 1px solid rgba(255,255,255,0.15);
   border-radius: 50%;
-  padding: 0.5rem;
+  padding: 0.8rem;
   transition: background 0.25s ease, transform 0.25s ease;
   cursor: default;
 }
 .org-chip:hover {
   background: rgba(255,255,255,0.14);
-  transform: translateY(-2px);
+  transform: translateY(-4px);
 }
 .org-chip-img {
-  width: 36px;
-  height: 36px;
+  width: 90px;
+  height: 90px;
   object-fit: cover;
   border-radius: 50%;
   border: 2px solid rgba(255,255,255,0.25);
-}
-.org-chip span {
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: #fff;
-  white-space: nowrap;
-  font-family: 'Inter', sans-serif;
 }
 
 
